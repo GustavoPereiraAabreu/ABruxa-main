@@ -2,26 +2,12 @@ using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
-    [Header("Configura��es do Inimigo")]
-    public float speed = 2f;                 
-    public float visionRange = 5f;        
-    public Transform player;                
+    public float speed = 2f;
+    public float visionRange = 6f;
+    public float obstacleAvoidDistance = 0.5f;
+    public Transform player;
 
-    private Rigidbody2D rb;
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-
-       
-        if (player == null)
-        {
-            GameObject p = GameObject.FindGameObjectWithTag("Player");
-            if (p != null) player = p.transform;
-        }
-    }
-
-    void FixedUpdate()
+    void Update()
     {
         if (player == null) return;
 
@@ -29,21 +15,21 @@ public class EnemyFollow : MonoBehaviour
 
         if (distance <= visionRange)
         {
-           
             Vector2 direction = (player.position - transform.position).normalized;
-            rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
-        }
-        else
-        {
-            
-            rb.linearVelocity = Vector2.zero;
-        }
-    }
 
-    private void OnDrawGizmosSelected()
-    {
-      
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, visionRange);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, obstacleAvoidDistance);
+
+            if (hit.collider != null && hit.collider.CompareTag("Wall"))
+            {
+               
+                Vector2 right = Vector2.Perpendicular(direction);
+                transform.position += (Vector3)right * speed * Time.deltaTime;
+            }
+            else
+            {
+                
+                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            }
+        }
     }
 }
