@@ -9,7 +9,7 @@ public class ItemMagico : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             podeInteragir = true;
-            MensagemUi.instance.MostrarMensagem("Pressione [E] para coletar o item mágico!");
+            MensagemUI.instance.MostrarMensagem("Pressione [E] para coletar o item mágico!");
         }
     }
 
@@ -26,7 +26,7 @@ public class ItemMagico : MonoBehaviour
         if (podeInteragir && Input.GetKeyDown(KeyCode.E))
         {
             ItensMenager.instance.PegarItem();
-            MensagemUi.instance.MostrarMensagem("Você coletou um item mágico!");
+            MensagemUI.instance.MostrarMensagem("Você coletou um item mágico!");
             Destroy(gameObject); // remove o item
         }
     }

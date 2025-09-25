@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMoviment : MonoBehaviour
+public class TwoPlayer : MonoBehaviour
 {
     public float movSpeed = 5f;
     private Rigidbody2D rb;
@@ -15,11 +15,12 @@ public class PlayerMoviment : MonoBehaviour
         float speedX = 0f;
         float speedY = 0f;
 
-        if (Input.GetKey(KeyCode.D)) speedX = movSpeed;
-        if (Input.GetKey(KeyCode.A)) speedX = -movSpeed;
-        if (Input.GetKey(KeyCode.W)) speedY = movSpeed;
-        if (Input.GetKey(KeyCode.S)) speedY = -movSpeed;
+        if (Input.GetKey(KeyCode.RightArrow)) speedX = movSpeed;
+        if (Input.GetKey(KeyCode.LeftArrow)) speedX = -movSpeed;
+        if (Input.GetKey(KeyCode.UpArrow)) speedY = movSpeed;
+        if (Input.GetKey(KeyCode.DownArrow)) speedY = -movSpeed;
 
         rb.linearVelocity = new Vector2(speedX, speedY);
     }
+
 }

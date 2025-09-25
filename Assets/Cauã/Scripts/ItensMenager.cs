@@ -15,7 +15,7 @@ public class ItensMenager : MonoBehaviour
     public void PegarItem()
     {
         itensColetados++;
-        MensagemUi.instance.MostrarMensagem("Itens coletados: " + itensColetados);
+        MensagemUI.instance.MostrarMensagem("Itens coletados: " + itensColetados);
     }
 
     public bool TodosItensPegos()

@@ -1,9 +1,9 @@
 using UnityEngine;
 using TMPro;
 
-public class MensagemUi : MonoBehaviour
+public class MensagemUI : MonoBehaviour
 {
-    public static MensagemUi instance; 
+    public static MensagemUI instance; 
     public TextMeshProUGUI textoMensagem;
     public float tempoExibicao = 2f; 
     private float timer;
