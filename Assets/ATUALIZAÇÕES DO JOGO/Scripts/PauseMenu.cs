@@ -1,34 +1,56 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public GameObject pauseUI;
     private bool isPaused = false;
+
+    void Start()
+    {
+        if (pauseUI != null)
+            pauseUI.SetActive(false); 
+    }
 
     void Update()
     {
+      
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
-            {
                 ResumeGame();
-            }
             else
-            {
                 PauseGame();
-            }
         }
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
-        Time.timeScale = 0f;
+        if (pauseUI != null)
+            pauseUI.SetActive(true);
+
+        Time.timeScale = 0f; 
         isPaused = true;
     }
 
-    void ResumeGame()
+    public void ResumeGame()
     {
+        if (pauseUI != null)
+            pauseUI.SetActive(false);
+
         Time.timeScale = 1f;
         isPaused = false;
     }
 
+    public void RestartLevel()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+    }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene("Melissa Iniciar");
+        Time.timeScale = 1f;
+    }
 }
