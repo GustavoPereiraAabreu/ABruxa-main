@@ -51,7 +51,7 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        SceneManager.LoadScene("Melissa Iniciar");
+        SceneManager.LoadScene("Melissa (Tela Inicial)");
         Time.timeScale = 1f;
     }
 }
