@@ -6,7 +6,7 @@ public class QUIT : MonoBehaviour
     public void Quit()
     {
 
-        SceneManager.LoadScene("Melissa Iniciar");
+        SceneManager.LoadScene("Melissa (Tela Inicialr");
         Time.timeScale = 1f;
     }
 }
