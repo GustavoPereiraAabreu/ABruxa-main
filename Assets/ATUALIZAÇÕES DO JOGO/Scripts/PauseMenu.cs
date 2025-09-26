@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (pauseUI != null)
             pauseUI.SetActive(false); 
+        Time.timeScale = 1.0f;
     }
 
     void Update()
